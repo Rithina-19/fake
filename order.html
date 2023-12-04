@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>order form</title>
+    <link rel="stylesheet" href="order.css" />
+  </head>
+  <body>
+    <script>
+      function handleSubmit() {
+        // Get form data
+        var fname = document.getElementsByName("fname")[0].value;
+        var lname = document.getElementsByName("lname")[0].value;
+        var houseadd = document.getElementsByName("houseadd")[0].value;
+        var apartment = document.getElementsByName("apartment")[0].value;
+        var city = document.getElementsByName("city")[0].value;
+        var state = document.getElementsByName("state")[0].value;
+        var pin = document.getElementsByName("pin")[0].value;
+        var phone = document.getElementsByName("phone")[0].value;
+        var email = document.getElementsByName("email")[0].value;
+
+        // Create a JavaScript object with the form data
+        var formData = {
+          fname: fname,
+          lname: lname,
+          houseadd: houseadd,
+          apartment: apartment,
+          city: city,
+          state: state,
+          pin: pin,
+          phone: phone,
+          email: email,
+        };
+
+        // Perform a POST request to the backend endpoint
+        fetch("http://localhost:3000/orderitems", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            // Handle the response from the server
+            alert("please enter the details again");
+            console.log(data);
+            // You can add further actions based on the response
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+
+    <div class="container">
+      <div class="title">
+        <h2>Product Order Form</h2>
+      </div>
+      <div class="d-flex">
+        <form action="connect.php" method="POST">
+          <label>
+            <span class="fname"
+              >First Name <span class="required">*</span></span
+            >
+            <input type="text" name="fname" />
+          </label>
+          <label>
+            <span class="lname">Last Name <span class="required">*</span></span>
+            <input type="text" name="lname" /> </label
+          ><br />
+
+          <label>
+            <span>Street Address <span class="required">*</span></span>
+            <input
+              type="text"
+              name="houseadd"
+              placeholder="House number and street name"
+              required
+            /> </label
+          ><br />
+          <label>
+            <span>&nbsp;</span>
+            <input
+              type="text"
+              name="apartment"
+              placeholder="Apartment, suite, unit etc. (optional)"
+            /> </label
+          ><br />
+          <label>
+            <span>Town / City <span class="required">*</span></span>
+            <input type="text" name="city" /> </label
+          ><br />
+          <label>
+            <span>State / County <span class="required">*</span></span>
+            <input type="text" name="state" /> </label
+          ><br />
+          <label>
+            <span>Postcode / ZIP <span class="required">*</span></span>
+            <input type="text" name="pin" /> </label
+          ><br />
+          <label>
+            <span>Phone <span class="required">*</span></span>
+            <input type="tel" name="phone" /> </label
+          ><br />
+          <label>
+            <span>Email Address <span class="required">*</span></span>
+            <input type="email" name="email" /> </label
+          ><br />
+        </form>
+        <div class="Yorder">
+          <table>
+            <tr>
+              <th colspan="2">Your order</th>
+            </tr>
+            <tr>
+              <td>Product Name x 2(Qty)</td>
+              <td>Rs.100.00</td>
+            </tr>
+            <tr>
+              <td>Subtotal</td>
+              <td>RS.100.00</td>
+            </tr>
+            <tr>
+              <td>Shipping</td>
+              <td>Free shipping</td>
+            </tr>
+          </table>
+          <br />
+          <div>
+            <input type="radio" name="dbt" value="dbt" checked /> Direct Bank
+            Transfer
+          </div>
+          <p>
+            Make your payment directly into our bank account.<br />
+            Please use your Order ID as the payment reference.<br />
+            Your order will not be shipped until the funds have cleared in our
+            account.
+          </p>
+          <div>
+            <input type="radio" name="dbt" value="cd" /> Cash on Delivery
+          </div>
+          <div>
+            <input type="radio" name="dbt" value="cd1" /> Paypal
+            <span>
+              <img
+                src="https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg"
+                alt=""
+                width="50"
+              />
+            </span>
+          </div>
+          <div onclick="handleSubmit()">
+            <button type="button">Place Order</button>
+          </div>
+        </div>
+        <!-- Yorder -->
+      </div>
+    </div>
+  </body>
+</html>
