@@ -1,0 +1,18 @@
+
+Pre requisite for the project to install in your system:
+•	Login in to mangodb in web browser.
+•	Download Docker to desktop.
+STEPS:
+1. Create folder demo and open in vs code.
+ 2.  Now open terminal in vscode and open demo file directory
+ 3. Type git clone link from the github project file and click gitbash (if github is installed in desktop)
+4. If git is not installed .go to git website your repositorycodeDownload zip.
+5. From downloads extract all the files and add to the folder demo.
+6. Install docker
+7. Now the docker image is built in the docker app ie demo will appear in images/local section.
+8. Now in the docker app click on your folder(demo) and click run.
+9. Now the local server will created. You will get the http link .copy the link and run in the web browser your web page will be displayed.
+10. Now open mangodB in web browser and sign in to it.
+11. Now in mangodB page click on databaseBrowse Collection.
+12 .There we can find our two page which accept data from the user .ie in our project we have two page which accepts the data from the user .ie order, login
+13. Now whatever data you enter in the login page will be stored in login section and order page will be stored in order section.
